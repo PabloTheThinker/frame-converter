@@ -1,0 +1,19 @@
+# FrameConverter Requirements
+# Python 3.8+ required
+
+# GUI Framework
+PyQt6>=6.6.0
+PyQt6-Qt6>=6.6.0
+
+# System dependencies (install via package manager):
+# - ffmpeg (for video conversion)
+# - ffprobe (for video analysis, usually comes with ffmpeg)
+#
+# Ubuntu/Debian/Pop!_OS:
+#   sudo apt install ffmpeg
+#
+# Fedora:
+#   sudo dnf install ffmpeg
+#
+# Arch Linux:
+#   sudo pacman -S ffmpeg

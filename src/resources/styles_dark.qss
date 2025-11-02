@@ -1,0 +1,635 @@
+/*
+ * Video Converter GUI - Modern Apple-Inspired DARK MODE
+ * Futuristic UI with glassmorphism and depth
+ */
+
+/* Color variables (as comments for reference):
+ * Primary: #0A84FF (Apple Blue - Dark Mode)
+ * Success: #32D74B (Apple Green - Dark Mode)
+ * Warning: #FF9F0A (Apple Orange - Dark Mode)
+ * Error: #FF453A (Apple Red - Dark Mode)
+ * Background: #1C1C1E (Apple Dark Background)
+ * Card Background: #2C2C2E
+ * Text: #FFFFFF (White)
+ * Secondary Text: #98989D
+ */
+
+/* Main Window - Dark Background */
+QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                stop:0 #1C1C1E, stop:1 #000000);
+}
+
+QWidget {
+    color: #FFFFFF;
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", "Inter", system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Drop Zone - Dark Glassmorphism */
+#dropZone {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 rgba(44, 44, 46, 0.95),
+                                stop:1 rgba(44, 44, 46, 0.85));
+    border: 2px dashed rgba(10, 132, 255, 0.5);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 8px;
+}
+
+#dropZone[dragging="true"] {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 rgba(10, 132, 255, 0.15),
+                                stop:1 rgba(10, 132, 255, 0.20));
+    border: 2px solid rgba(10, 132, 255, 0.7);
+}
+
+#dropZoneLabel {
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+}
+
+#dropZoneOrLabel {
+    font-size: 14px;
+    color: #98989D;
+    font-weight: 500;
+    margin: 4px 0px;
+}
+
+#dropZoneBrowseButton {
+    background: #0A84FF;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 160px;
+    letter-spacing: -0.01em;
+}
+
+#dropZoneBrowseButton:hover {
+    background: #409CFF;
+}
+
+#dropZoneBrowseButton:pressed {
+    background: #0070E0;
+    padding: 15px 40px 13px 40px;
+}
+
+#dropZoneBrowseButton:disabled {
+    background: #3A3A3C;
+    color: #636366;
+}
+
+#dropZoneFormatLabel {
+    font-size: 12px;
+    color: #98989D;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+/* File List - Dark Card Design */
+#fileListTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+#fileList {
+    background: rgba(44, 44, 46, 0.7);
+    border: none;
+    border-radius: 16px;
+    padding: 12px;
+    margin: 8px;
+}
+
+#fileList::item {
+    background: #2C2C2E;
+    border: none;
+    border-radius: 12px;
+    padding: 0px;
+    margin: 6px 0px;
+}
+
+QListWidget#fileList QWidget {
+    background: transparent;
+}
+
+QListWidget#fileList QLabel {
+    color: #FFFFFF;
+    background: transparent;
+}
+
+#fileList::item:hover {
+    background: rgba(10, 132, 255, 0.12);
+}
+
+#fileList::item:selected {
+    background: rgba(10, 132, 255, 0.20);
+}
+
+#fileName {
+    font-weight: 600;
+    font-size: 15px;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+#fileDetails {
+    font-size: 13px;
+    color: #98989D;
+    font-weight: 500;
+}
+
+#statusIcon {
+    font-size: 20px;
+    padding: 8px;
+}
+
+#statusIcon[status="pending"] {
+    color: #98989D;
+}
+
+#statusIcon[status="processing"] {
+    color: #FF9F0A;
+}
+
+#statusIcon[status="completed"] {
+    color: #32D74B;
+    font-weight: bold;
+}
+
+#statusIcon[status="failed"] {
+    color: #FF453A;
+}
+
+#removeFileButton {
+    background-color: transparent;
+    color: #FF453A;
+    border: none;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+#removeFileButton:hover {
+    color: #FF453A;
+    background-color: rgba(255, 69, 58, 0.15);
+}
+
+#removeFileButton:pressed {
+    background-color: rgba(255, 69, 58, 0.25);
+}
+
+#clearAllButton {
+    background-color: transparent;
+    color: #FF453A;
+    border: 1.5px solid rgba(255, 69, 58, 0.4);
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#clearAllButton:hover {
+    background-color: rgba(255, 69, 58, 0.12);
+    border-color: #FF453A;
+}
+
+#clearAllButton:pressed {
+    background-color: rgba(255, 69, 58, 0.20);
+}
+
+#clearAllButton:disabled {
+    color: #3A3A3C;
+    border-color: #3A3A3C;
+}
+
+/* Progress Widget - Dark & Sleek */
+#currentFileLabel {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+#conversionProgressBar {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(120, 120, 128, 0.24);
+    height: 8px;
+    text-align: center;
+}
+
+#conversionProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #0A84FF, stop:1 #5AC8FA);
+    border-radius: 10px;
+}
+
+#timeLabel, #speedLabel {
+    font-size: 13px;
+    color: #98989D;
+    font-weight: 500;
+}
+
+#overallProgressLabel {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+#overallProgressBar {
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(120, 120, 128, 0.24);
+    height: 8px;
+}
+
+#overallProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                stop:0 #32D74B, stop:1 #30D158);
+    border-radius: 10px;
+}
+
+/* Buttons - Dark Mode Apple Style */
+#startButton {
+    background: #32D74B;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 40px;
+    font-size: 17px;
+    font-weight: 600;
+    min-width: 180px;
+    letter-spacing: -0.02em;
+}
+
+#startButton:hover {
+    background: #30DB53;
+}
+
+#startButton:pressed {
+    background: #2AC845;
+    padding: 17px 40px 15px 40px;
+}
+
+#startButton:disabled {
+    background: #3A3A3C;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#cancelButton {
+    background: rgba(255, 69, 58, 0.18);
+    color: #FF453A;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 17px;
+    font-weight: 600;
+    min-width: 120px;
+    letter-spacing: -0.02em;
+}
+
+#cancelButton:hover {
+    background: rgba(255, 69, 58, 0.25);
+}
+
+#cancelButton:pressed {
+    background: rgba(255, 69, 58, 0.35);
+    padding: 17px 32px 15px 32px;
+}
+
+#cancelButton:disabled {
+    background: rgba(58, 58, 60, 0.3);
+    color: #3A3A3C;
+}
+
+#settingsButton, #aboutButton {
+    background-color: rgba(10, 132, 255, 0.15);
+    color: #0A84FF;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+#settingsButton:hover, #aboutButton:hover {
+    background-color: rgba(10, 132, 255, 0.25);
+}
+
+#settingsButton:pressed, #aboutButton:pressed {
+    background-color: rgba(10, 132, 255, 0.35);
+    padding: 13px 24px 11px 24px;
+}
+
+/* Settings Dialog - Dark Mode */
+QDialog {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                stop:0 #1C1C1E, stop:1 #000000);
+}
+
+QGroupBox {
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    margin-top: 24px;
+    padding-top: 32px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 18px;
+    background: #2C2C2E;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 8px 12px 6px 12px;
+    margin-left: 4px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: transparent;
+}
+
+QRadioButton {
+    spacing: 12px;
+    padding: 10px 8px;
+    font-size: 15px;
+    color: #FFFFFF;
+    min-height: 24px;
+}
+
+QRadioButton::text {
+    min-width: 300px;
+}
+
+QRadioButton::indicator {
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+}
+
+QRadioButton::indicator::unchecked {
+    border: 2px solid rgba(152, 152, 157, 0.5);
+    background: qradialgradient(cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+                                stop:0 #2C2C2E, stop:1 #1C1C1E);
+}
+
+QRadioButton::indicator::unchecked:hover {
+    border: 2px solid #0A84FF;
+    background: qradialgradient(cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+                                stop:0 #2C2C2E, stop:1 rgba(10, 132, 255, 0.1));
+}
+
+QRadioButton::indicator::checked {
+    border: 2px solid #0A84FF;
+    background: qradialgradient(cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
+                                stop:0 #0A84FF, stop:0.4 #0A84FF,
+                                stop:0.5 #2C2C2E, stop:1 #2C2C2E);
+}
+
+/* Modern Checkbox - Dark Mode */
+QCheckBox {
+    spacing: 12px;
+    padding: 10px 8px;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+QCheckBox::indicator {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+}
+
+QCheckBox::indicator::unchecked {
+    border: 2px solid rgba(152, 152, 157, 0.5);
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #2C2C2E, stop:1 #1C1C1E);
+}
+
+QCheckBox::indicator::unchecked:hover {
+    border: 2px solid #0A84FF;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #2C2C2E, stop:1 rgba(10, 132, 255, 0.15));
+}
+
+QCheckBox::indicator::checked {
+    border: none;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #0A84FF, stop:1 #0070E0);
+    image: url(none);
+}
+
+QCheckBox::indicator::checked:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #409CFF, stop:1 #0080F0);
+}
+
+QCheckBox:disabled {
+    color: #636366;
+}
+
+QCheckBox::indicator::disabled {
+    border-color: #3A3A3C;
+    background: #1C1C1E;
+}
+
+QSpinBox {
+    border: 1.5px solid rgba(152, 152, 157, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: #2C2C2E;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+QSpinBox:focus {
+    border: 2px solid #0A84FF;
+    background-color: rgba(10, 132, 255, 0.08);
+}
+
+QSpinBox:hover {
+    border: 1.5px solid rgba(10, 132, 255, 0.5);
+}
+
+QLineEdit {
+    border: 1.5px solid rgba(152, 152, 157, 0.3);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background-color: #2C2C2E;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+QLineEdit:focus {
+    border: 2px solid #0A84FF;
+    background-color: rgba(10, 132, 255, 0.08);
+}
+
+QLineEdit:hover {
+    border: 1.5px solid rgba(10, 132, 255, 0.5);
+}
+
+QLineEdit:read-only {
+    background-color: #1C1C1E;
+    color: #98989D;
+}
+
+QPushButton {
+    background-color: #0A84FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #409CFF;
+}
+
+QPushButton:pressed {
+    background-color: #0070E0;
+}
+
+QPushButton:disabled {
+    background-color: #3A3A3C;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#noteLabel, #infoLabel {
+    color: #98989D;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Tooltips - Dark Style */
+QToolTip {
+    background-color: rgba(44, 44, 46, 0.95);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ScrollBar - Dark macOS Style */
+QScrollBar:vertical {
+    border: none;
+    background-color: transparent;
+    width: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Message Boxes - Dark Dialog */
+QMessageBox {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                                stop:0 #1C1C1E, stop:1 #000000);
+}
+
+QMessageBox QPushButton {
+    min-width: 100px;
+    padding: 10px 20px;
+}
+
+QMessageBox QLabel {
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+/* ComboBox - Dark Dropdown */
+QComboBox {
+    border: 1.5px solid rgba(152, 152, 157, 0.3);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #2C2C2E;
+    font-size: 15px;
+    color: #FFFFFF;
+    min-width: 150px;
+}
+
+QComboBox:hover {
+    border: 1.5px solid rgba(10, 132, 255, 0.5);
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #2C2C2E, stop:1 rgba(10, 132, 255, 0.08));
+}
+
+QComboBox:focus {
+    border: 2px solid #0A84FF;
+    background: rgba(10, 132, 255, 0.08);
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #98989D;
+    margin-right: 8px;
+}
+
+QComboBox QAbstractItemView {
+    border: none;
+    border-radius: 12px;
+    background: #2C2C2E;
+    selection-background-color: rgba(10, 132, 255, 0.2);
+    selection-color: #FFFFFF;
+    padding: 8px;
+    outline: none;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 10px 16px;
+    border-radius: 8px;
+    min-height: 24px;
+    color: #FFFFFF;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background: rgba(10, 132, 255, 0.15);
+}
+
+QComboBox QAbstractItemView::item:selected {
+    background: rgba(10, 132, 255, 0.25);
+}
