@@ -286,7 +286,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Pablo** - Creator & Developer
+**Pablo Navarro** - Creator & Developer
 
 - X/Twitter: [@pablothethinker](https://x.com/pablothethinker)
 - Company: Kyron Industries
@@ -336,7 +336,7 @@ None at this time! Report bugs via GitHub Issues.
 
 <div align="center">
 
-Made with ❤️ by Pablo @ Kyron Industries
+Made with ❤️ by Pablo Navarro @ Kyron Industries
 
 ⭐ Star this repo if you find it useful!
 

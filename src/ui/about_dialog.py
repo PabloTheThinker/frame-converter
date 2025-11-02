@@ -95,13 +95,23 @@ class AboutDialog(QDialog):
         right_layout.addSpacing(16)
 
         # Creator section
-        creator_label = QLabel(f"Created by {config.ORGANIZATION}")
+        creator_label = QLabel("Created by Pablo Navarro")
         creator_label.setObjectName("aboutCreator")
         creator_label.setStyleSheet("""
             font-size: 14px;
             font-weight: 600;
         """)
         right_layout.addWidget(creator_label)
+
+        # Company label
+        company_label = QLabel(f"{config.ORGANIZATION}")
+        company_label.setObjectName("aboutCompany")
+        company_label.setStyleSheet("""
+            font-size: 13px;
+            opacity: 0.6;
+            margin-top: 4px;
+        """)
+        right_layout.addWidget(company_label)
 
         right_layout.addSpacing(16)
 
