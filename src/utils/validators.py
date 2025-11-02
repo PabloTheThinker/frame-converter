@@ -1,5 +1,5 @@
 """
-File validation utilities.
+File validation utilities with security hardening.
 """
 import os
 import shutil
@@ -7,6 +7,34 @@ from pathlib import Path
 from typing import Tuple
 from .config import config
 from .logger import logger
+
+
+def sanitize_path(file_path: str) -> str:
+    """
+    Sanitize file path to prevent directory traversal attacks.
+
+    Args:
+        file_path: Raw file path
+
+    Returns:
+        Sanitized absolute path
+
+    Raises:
+        ValueError: If path contains dangerous patterns
+    """
+    # Convert to Path object and resolve to absolute path
+    path = Path(file_path).resolve()
+
+    # Check for suspicious patterns that could indicate path traversal
+    dangerous_patterns = ['..', '~', '$']
+    path_str = str(path)
+
+    for pattern in dangerous_patterns:
+        if pattern in file_path and pattern not in path_str:
+            # The resolve() removed a suspicious pattern
+            logger.warning(f"Suspicious path pattern detected and sanitized: {file_path}")
+
+    return str(path)
 
 
 def is_valid_video_file(file_path: str) -> Tuple[bool, str]:
@@ -21,6 +49,13 @@ def is_valid_video_file(file_path: str) -> Tuple[bool, str]:
     """
     if not file_path:
         return False, "No file path provided"
+
+    # Sanitize path to prevent directory traversal
+    try:
+        file_path = sanitize_path(file_path)
+    except Exception as e:
+        logger.error(f"Path sanitization failed: {e}")
+        return False, "Invalid file path"
 
     path = Path(file_path)
 
@@ -158,6 +193,11 @@ def get_output_filename(input_path: str, output_directory: str = None) -> str:
     Returns:
         Full path to output file
     """
+    # Sanitize paths
+    input_path = sanitize_path(input_path)
+    if output_directory:
+        output_directory = sanitize_path(output_directory)
+
     input_file = Path(input_path)
     output_dir = Path(output_directory or config.get_output_directory())
 

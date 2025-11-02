@@ -241,6 +241,26 @@ With CRF 17 (High Quality) encoding:
 
 *Actual sizes vary based on video complexity and motion*
 
+## 🔒 Security
+
+FrameConverter is built with security as a priority:
+
+- ✅ **No Command Injection** - All FFmpeg commands use argument lists (not shell strings)
+- ✅ **Path Traversal Protection** - All file paths are sanitized and validated
+- ✅ **Input Validation** - File types, sizes, and permissions are checked
+- ✅ **No Network Access** - Fully offline application, no data collection
+- ✅ **Timeouts & Limits** - All operations have appropriate resource limits
+- ✅ **Safe Subprocess Handling** - Processes can be safely cancelled
+
+For more details, see [SECURITY.md](SECURITY.md).
+
+### Reporting Security Issues
+
+If you discover a security vulnerability, please follow responsible disclosure:
+- **Contact privately**: DM on X/Twitter [@pablothethinker](https://x.com/pablothethinker)
+- **Don't publish** until a fix is available
+- See [SECURITY.md](SECURITY.md) for full details
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

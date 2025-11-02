@@ -61,19 +61,20 @@ class AboutDialog(QDialog):
 
         # App name and version
         name_label = QLabel(config.APP_NAME)
+        name_label.setObjectName("aboutAppName")
         name_label.setStyleSheet("""
             font-size: 28px;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: #1D1D1F;
         """)
         right_layout.addWidget(name_label)
 
         # Version
         version_label = QLabel(f"Version {config.APP_VERSION}")
+        version_label.setObjectName("aboutVersion")
         version_label.setStyleSheet("""
             font-size: 13px;
-            color: #86868B;
+            opacity: 0.6;
             margin-bottom: 8px;
         """)
         right_layout.addWidget(version_label)
@@ -83,9 +84,10 @@ class AboutDialog(QDialog):
                     "Fast, modern, and easy to use.")
         description = QLabel(desc_text)
         description.setWordWrap(True)
+        description.setObjectName("aboutDescription")
         description.setStyleSheet("""
             font-size: 13px;
-            color: #86868B;
+            opacity: 0.6;
             line-height: 1.5;
         """)
         right_layout.addWidget(description)
@@ -94,9 +96,9 @@ class AboutDialog(QDialog):
 
         # Creator section
         creator_label = QLabel(f"Created by {config.ORGANIZATION}")
+        creator_label.setObjectName("aboutCreator")
         creator_label.setStyleSheet("""
             font-size: 14px;
-            color: #1D1D1F;
             font-weight: 600;
         """)
         right_layout.addWidget(creator_label)
@@ -131,9 +133,10 @@ class AboutDialog(QDialog):
         # Copyright
         copyright_label = QLabel(f"© 2025 {config.ORGANIZATION}. All rights reserved.")
         copyright_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        copyright_label.setObjectName("aboutCopyright")
         copyright_label.setStyleSheet("""
             font-size: 11px;
-            color: #86868B;
+            opacity: 0.5;
             margin-top: 16px;
         """)
         main_layout.addWidget(copyright_label)
