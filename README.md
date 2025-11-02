@@ -28,14 +28,23 @@ Convert MP4 videos to MOV format with an Apple-inspired interface
 
 ## 📸 Screenshots
 
-### Main Window
+### Main Window (Light Mode)
 ![Main Window](screenshots/main-window.png)
 
-### Settings Dialog
+### Settings Dialog (Light Mode)
 ![Settings](screenshots/settings.png)
 
 ### Dark Mode
 ![Dark Mode](screenshots/dark-mode.png)
+
+### Settings Dialog (Dark Mode)
+![Settings Dark](screenshots/settings-dark.png)
+
+### About Dialog
+<p align="center">
+  <img src="screenshots/about.png" alt="About Light Mode" width="600"/>
+  <img src="screenshots/about-dark.png" alt="About Dark Mode" width="600"/>
+</p>
 
 ## 🚀 Quick Start
 
